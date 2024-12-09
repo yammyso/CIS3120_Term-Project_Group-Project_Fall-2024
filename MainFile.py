@@ -3,7 +3,7 @@ from processing import SalaryProcessor
 from visualization import SalaryVisualizer
 def main():
     # Initialize API and fetch data
-    nba_api = NBAAPI("https://api.example.com")  # Replace with actual API URL
+    nba_api = NBAAPI("https://api.example.com")  # Give an API
     data = nba_api.fetch_data("players_salaries")  # Replace with the actual API endpoint
     
     if data:
