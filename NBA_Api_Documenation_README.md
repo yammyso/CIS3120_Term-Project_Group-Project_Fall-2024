@@ -1,1 +1,1 @@
-URL: https://github.com/rsforbes/nba_api
+URL: https://github.com/swar/nba_api/tree/master
