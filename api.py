@@ -6,7 +6,7 @@ class Nba_api_config:
 
     # Initialize API headers and any default configurations
     def __init__(self):
-
+        self.base_url = 'https://stats.nba.com/stats'
         self.headers = {
             'Connection': 'keep-alive',
             'Accept': 'application/json, text/plain, */*',
@@ -32,10 +32,10 @@ class Nba_api_config:
         """
         Fetches data from specified API endpoint.
         :param endpoint: API endpoint to fetch data from.
-        :return: JSON data if successful, Resume if otherwise.
+        :return: JSON data if successful, None if otherwise. 
         """
         try:
-            response = requests.get(f"{self.base_url}/{endpoint}")
+            response = requests.get(f"{self.base_url}/{endpoint}", headers=self.headers) 
             response.raise_for_status()
             return response.json()
         except requests.exceptions.RequestException as e:
