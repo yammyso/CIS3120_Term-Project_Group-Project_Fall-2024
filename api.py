@@ -1,9 +1,10 @@
+# Import package 
 import requests
 
-# Encapsulate the setup for the NBA API
+# Encapsulate setup for the NBA API
 class Nba_api_config:
 
-    # Initialize the API headers and any default configurations
+    # Initialize API headers and any default configurations
     def __init__(self):
 
         self.headers = {
@@ -21,7 +22,7 @@ class Nba_api_config:
             'Accept-Language': 'en-US,en;q=0.9',
         }
 
-    # Retrieve the API headers
+    # Retrieve API headers
     def get_headers(self):
 
         return self.headers
@@ -29,9 +30,9 @@ class Nba_api_config:
 
     def fetch_data(self, endpoint):
         """
-        Fetches data from the specified API endpoint.
+        Fetches data from specified API endpoint.
         :param endpoint: API endpoint to fetch data from.
-        :return: JSON data if successful, None otherwise.
+        :return: JSON data if successful, Resume if otherwise.
         """
         try:
             response = requests.get(f"{self.base_url}/{endpoint}")
