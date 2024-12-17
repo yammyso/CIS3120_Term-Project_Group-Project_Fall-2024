@@ -27,7 +27,6 @@ class Nba_api_config:
 
         return self.headers
 
-
     def fetch_data(self, endpoint):
         """
         Fetches data from specified API endpoint.
