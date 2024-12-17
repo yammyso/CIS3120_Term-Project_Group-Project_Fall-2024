@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
+
 class SalaryVisualizer:
     def __init__(self, players):
         """
@@ -7,14 +8,19 @@ class SalaryVisualizer:
         
         :param players: List of Player objects.
         """
-        self.players = players
+        self.players = [player for player in players if hasattr(player, 'name') and hasattr(player, 'salary')]
+        
     def visualize_salaries(self):
         """
         Creates a bar chart of the NBA players' salaries.
         """
-        player_names = [player.name for player in self.players]
-        player_salaries = [player.salary for player in self.players]
-        plt.figure(figsize=(12, 6))
+        # filters for salaries 
+        valid_players = [p for p in self.players if isinstance(p.salary, (int, float)) and p.salary is not None]
+        player_names = [player.name for player in valid_players]
+        player_salaries = [player.salary for player in valid_players]
+
+        # creates bar chart 
+        plt.figure(figsize=(16, 8))
         sns.barplot(x=player_names, y=player_salaries)
         plt.xticks(rotation=90)
         plt.title("NBA Player Salaries")
@@ -22,11 +28,15 @@ class SalaryVisualizer:
         plt.ylabel("Salary (USD)")
         plt.tight_layout()
         plt.show()
+        
     def visualize_salary_distribution(self):
         """
         Creates a histogram of the NBA player salaries.
         """
-        salaries = [player.salary for player in self.players]
+        # filters for salaries 
+        salaries = [player.salary for player in self.players if isinstance(player.salary, (int, float)) and player.salary is not None]
+
+        # creates histogram 
         plt.figure(figsize=(10, 6))
         sns.histplot(salaries, kde=True, bins=20)
         plt.title("Salary Distribution of NBA Players")
